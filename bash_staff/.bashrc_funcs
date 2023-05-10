@@ -3,10 +3,6 @@
 alias dockerbash="docker run --rm -i -t --entrypoint=/bin/bash"
 alias dockersh="docker run --rm -i -t --entrypoint=/bin/sh"
 
-function gacp() {
-    git add . && git commit -m "$@" && git push
-}
-
 function dockerhere() {
     dirname=${PWD##*/}
     docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
@@ -28,3 +24,10 @@ function mygithub() {
 
 alias ggb="git branch"
 
+function gacp() {
+    git add . && git commit -m "$@" && git push
+}
+
+function mgacp() {
+  GIT_SSH_COMMAND='ssh -i /home/dude/.ssh/my_github -o IdentitiesOnly=yes' git add . && git commit -m "$@" && git push
+}
