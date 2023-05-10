@@ -29,5 +29,6 @@ function gacp() {
 }
 
 function mgacp() {
-  GIT_SSH_COMMAND='ssh -i /home/dude/.ssh/my_github -o IdentitiesOnly=yes' git add . && git commit -m "$@" && git push
+  export GIT_SSH_COMMAND='ssh -i /home/dude/.ssh/my_github -o IdentitiesOnly=yes' 
+  git add . && git commit -m "$@" && git push
 }
